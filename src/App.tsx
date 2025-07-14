@@ -5,6 +5,11 @@ import AuthForm from './components/Auth/AuthForm';
 import Header from './components/Layout/Header';
 import Sidebar from './components/Layout/Sidebar';
 import DashboardHome from './components/Dashboard/DashboardHome';
+import SWMSBuilder from './components/SWMSBuilder';
+import AccountPage from './components/AccountPage';
+import AdminPanel from './components/AdminPanel';
+import PDFPreview from './components/PDFPreview';
+
 
 const AppContent: React.FC = () => {
   const { user, isLoading } = useAuth();
@@ -63,32 +68,14 @@ const AppContent: React.FC = () => {
           />
         );
       case 'create-swms':
-        return (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">SWMS Builder</h3>
-              <p className="text-gray-600">Multi-step SWMS creation wizard coming soon...</p>
-            </div>
-          </div>
-        );
+        
+  return <SWMSBuilder />;
+        
       case 'my-swms':
-        return (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">My SWMS Documents</h3>
-              <p className="text-gray-600">Document management interface coming soon...</p>
-            </div>
-          </div>
-        );
-      case 'all-contacts':
-        return (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">All Contacts</h3>
-              <p className="text-gray-600">User management interface coming soon...</p>
-            </div>
-          </div>
-        );
+  return <PDFPreview />; // or a real MySWMS component later
+
+case 'all-contacts':
+  return <AdminPanel />;
       case 'billing':
         return (
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
@@ -99,14 +86,7 @@ const AppContent: React.FC = () => {
           </div>
         );
       case 'settings':
-        return (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Settings</h3>
-              <p className="text-gray-600">Account settings coming soon...</p>
-            </div>
-          </div>
-        );
+  return <AccountPage />;
       default:
         return null;
     }
